@@ -14,5 +14,8 @@ app.prepare(ctx_id=0, det_size=(640, 640))
 #img = ins_get_image('joe1')
 image_to_detect = cv2.imread(input_image_path)
 faces = app.get(image_to_detect)
+
 rimg = app.draw_on(image_to_detect, faces)
 cv2.imwrite(output_image_path, rimg)
+
+

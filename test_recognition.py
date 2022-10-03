@@ -426,8 +426,11 @@ class BasePredictor(object):
         # use zero copy
         config.switch_use_feed_fetch_ops(False)
         predictor = create_predictor(config)
+        print("predictor: ",predictor)
         input_names = predictor.get_input_names()
+        print("input_names: ", input_names)
         output_names = predictor.get_output_names()
+        print("output_names: ", output_names)
         return predictor, input_names, output_names
 
     def preprocess(self):
@@ -735,8 +738,13 @@ def main(args=None):
     #args.det_model = 'RetinaFace-10GF'
     #args.rec_model = 'ResNet50@WebFace600K'
     print("Args: ",args)
+
+    parser2= parser(add_help=True)
+    args = parser().parse_args()
+    args.input = "./datasets/input/"
+    args.output = "./datasets/output/"
     predictor = InsightFace(args)
-    res = predictor.predict("./datasets/elon.jpg", print_info=True)
+    res = predictor.predict("./datasets/input/elon.jpg", print_info=True)
     for _ in res:
         pass
 

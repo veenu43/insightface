@@ -47,7 +47,7 @@ input_image_path = "./datasets/input/" + image_name
 image_to_detect = cv2.imread(input_image_path)
 faces_modi = app.get(image_to_detect)
 print("Modi:", faces_modi[0].embedding_norm)
-key = 'embedding'
+key = 'landmark_3d_68'
 # 'pose','landmark_3d_68','kps','landmark_2d_106','embedding'
 known_face_encodings = [face_elon[0].get(key), faces_biden[0].get(key), faces_modi[0].get(key)]
 
@@ -62,8 +62,16 @@ image_to_detect = cv2.imread(input_image_path)
 face_elon2 = app.get(image_to_detect)
 print("Elon2:", face_elon2[0].embedding_norm)
 
+
+image_name = "Modi2.jpg"
+input_image_path = "./datasets/input/" + image_name
+image_to_detect = cv2.imread(input_image_path)
+face_modi2 = app.get(image_to_detect)
+print("Modi2:", face_modi2[0].embedding_norm)
+
+
 print(np.linalg.norm(known_face_encodings - faces_biden2[0].get(key), axis=1))
-print(list(np.linalg.norm(known_face_encodings - faces_biden2[0].get(key), axis=1) <= 0.8))
+print(list(np.linalg.norm(known_face_encodings - faces_biden2[0].get(key), axis=1) <= 0.9))
 
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
@@ -75,3 +83,6 @@ known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].norme
 print(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding, axis=1))
 print(list(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding, axis=1) <= 0.9))
 
+known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
+print(np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1))
+print(list(np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1) <= 0.9))

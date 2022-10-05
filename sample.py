@@ -95,6 +95,29 @@ face_modi6 = app.get(image_to_detect)
 print("Modi6:", face_modi6[0].embedding_norm)
 print(f"Modi6:Age{face_modi6[0].get('age')}, Gender {face_modi6[0].get('gender')}")
 
+image_name = "Modi7.jpg"
+input_image_path = "./datasets/input/" + image_name
+image_to_detect = cv2.imread(input_image_path)
+face_modi7 = app.get(image_to_detect)
+print("Modi7:", face_modi7[0].embedding_norm)
+print(f"Modi7:Age{face_modi7[0].get('age')}, Gender {face_modi7[0].get('gender')}")
+
+
+image_name = "Modi8.jpg"
+input_image_path = "./datasets/input/" + image_name
+image_to_detect = cv2.imread(input_image_path)
+face_modi8 = app.get(image_to_detect)
+print("Modi8:", face_modi8[0].embedding_norm)
+print(f"Modi8:Age{face_modi8[0].get('age')}, Gender {face_modi8[0].get('gender')}")
+
+image_name = "Modi9.jpg"
+input_image_path = "./datasets/input/" + image_name
+image_to_detect = cv2.imread(input_image_path)
+face_modi9 = app.get(image_to_detect)
+print("Modi9:", face_modi9[0].embedding_norm)
+print(f"Modi9:Age{face_modi9[0].get('age')}, Gender {face_modi9[0].get('gender')}")
+
+
 key = 'landmark_3d_68'
 # 'pose','landmark_3d_68','kps','landmark_2d_106','embedding'
 known_face_encodings = [face_elon[0].get(key), faces_biden[0].get(key), faces_modi[0].get(key)]
@@ -122,21 +145,33 @@ print(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding,
 print(list(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding, axis=1) <= 0.9))
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1) <= 0.9))
+print("Modi2",np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1))
+print("Modi2",list(np.linalg.norm(known_face_norm_encodings - face_modi2[0].normed_embedding, axis=1) <= 0.9))
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_modi3[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_modi3[0].normed_embedding, axis=1) <= 0.9))
+print("Modi3",np.linalg.norm(known_face_norm_encodings - face_modi3[0].normed_embedding, axis=1))
+print("Modi3",list(np.linalg.norm(known_face_norm_encodings - face_modi3[0].normed_embedding, axis=1) <= 0.9))
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_modi5[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_modi5[0].normed_embedding, axis=1) <= 1.1))
+print("Modi5",np.linalg.norm(known_face_norm_encodings - face_modi5[0].normed_embedding, axis=1))
+print("Modi5",list(np.linalg.norm(known_face_norm_encodings - face_modi5[0].normed_embedding, axis=1) <= 1.1))
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_modi4[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_modi4[0].normed_embedding, axis=1) <= 1.1))
+print("Modi4",np.linalg.norm(known_face_norm_encodings - face_modi4[0].normed_embedding, axis=1))
+print("Modi4",list(np.linalg.norm(known_face_norm_encodings - face_modi4[0].normed_embedding, axis=1) <= 1.1))
 
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_modi6[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_modi6[0].normed_embedding, axis=1) <= 1.1))
+print("Modi6",np.linalg.norm(known_face_norm_encodings - face_modi6[0].normed_embedding, axis=1))
+print("Modi6",list(np.linalg.norm(known_face_norm_encodings - face_modi6[0].normed_embedding, axis=1) <= 1.1))
+
+known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
+print("Modi7",np.linalg.norm(known_face_norm_encodings - face_modi7[0].normed_embedding, axis=1))
+print("Modi7",list(np.linalg.norm(known_face_norm_encodings - face_modi7[0].normed_embedding, axis=1) <= 1.1))
+
+known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
+print("Modi8",np.linalg.norm(known_face_norm_encodings - face_modi8[0].normed_embedding, axis=1))
+print("Modi8",list(np.linalg.norm(known_face_norm_encodings - face_modi8[0].normed_embedding, axis=1) <= 1.1))
+
+known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding, faces_modi[0].normed_embedding]
+print("Modi9",np.linalg.norm(known_face_norm_encodings - face_modi9[0].normed_embedding, axis=1))
+print("Modi9",list(np.linalg.norm(known_face_norm_encodings - face_modi9[0].normed_embedding, axis=1) <= 1.1))

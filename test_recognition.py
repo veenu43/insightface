@@ -718,7 +718,7 @@ class InsightFace(object):
 
 
 # for CLI
-def main(args=None):
+def main(args=Nonea):
     logging.basicConfig(level=logging.INFO)
     parser1 = argparse.ArgumentParser(description='do ijb test')
     # general

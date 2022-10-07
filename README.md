@@ -19,3 +19,6 @@ pip install prox
 pip install paddle
 pip install paddlepaddle
 pip install numba
+
+pip install pymongo
+pip install dnspython

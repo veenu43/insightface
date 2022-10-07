@@ -27,30 +27,6 @@ face_elon = app.get(image_to_detect)
 
 
 
-def save_report(report_to_save):
-    save_to_db('faceRecognition', 'insightface_buffalo_l', [report_to_save])
-
-
-def get_json(image_name, face_output):
-    modeloutput = model_json(image_name, face_output[0].get('bbox'), face_output[0].get('kps'),
-                             face_output[0].get('landmark_3d_68'), face_output[0].get('det_score'),
-                             face_output[0].get('pose'),
-                             face_output[0].get('landmark_2d_106'), face_output[0].get('gender'),
-                             face_output[0].get('age'), face_output[0].get('embedding'))
-    # print(ModelPerformanceMetricEncoder().encode(modeloutput))
-    print(type(modeloutput))
-    print(ModelPerformanceMetricEncoder().encode(modeloutput))
-
-    performance_metric_json = json.dumps(modeloutput, indent=4, cls=ModelPerformanceMetricEncoder)
-    print("Storing model performance report object: ", performance_metric_json)
-
-    performance_metric_json_decoded = json.loads(performance_metric_json)
-    print(performance_metric_json_decoded)
-
-    return performance_metric_json_decoded
-
-performance_metric_json_decoded = get_json(image_name, face_elon)
-save_report(performance_metric_json_decoded)
 '''
 performance_metric_json = json.dumps(modeloutput.__dict__)
 
@@ -83,8 +59,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_elon2 = app.get(image_to_detect)
 print("Elon2:", face_elon2[0].embedding_norm)
 print(f"Elon2:Age{face_elon2[0].get('age')}, Gender {face_elon2[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_elon2)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "biden.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -92,8 +67,7 @@ image_to_detect = cv2.imread(input_image_path)
 faces_biden = app.get(image_to_detect)
 print("Biden:", faces_biden[0].embedding_norm)
 print(f"Biden:Age{faces_biden[0].get('age')}, Gender {faces_biden[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, faces_biden)
-save_report(performance_metric_json_decoded)
+
 
 
 image_name = "biden2.jpg"
@@ -103,8 +77,7 @@ faces_biden2 = app.get(image_to_detect)
 print("Biden2:", faces_biden2[0].embedding_norm)
 print(f"Biden2:Age{faces_biden2[0].get('age')}, Gender {faces_biden2[0].get('gender')}")
 # print(face_elon[0].get('embedding') == )
-performance_metric_json_decoded = get_json(image_name, faces_biden2)
-save_report(performance_metric_json_decoded)
+
 
 
 image_name = "modi.jpg"
@@ -113,8 +86,7 @@ image_to_detect = cv2.imread(input_image_path)
 faces_modi = app.get(image_to_detect)
 print("Modi:", faces_modi[0].embedding_norm)
 print(f"Modi:Age{faces_modi[0].get('age')}, Gender {faces_modi[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, faces_modi)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "Modi2.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -122,8 +94,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi2 = app.get(image_to_detect)
 print("Modi2:", face_modi2[0].embedding_norm)
 print(f"Modi2:Age{face_modi2[0].get('age')}, Gender {face_modi2[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi2)
-save_report(performance_metric_json_decoded)
+
 
 
 image_name = "Modi3.jpg"
@@ -132,8 +103,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi3 = app.get(image_to_detect)
 print("Modi3:", face_modi3[0].embedding_norm)
 print(f"Modi3:Age{face_modi3[0].get('age')}, Gender {face_modi3[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi3)
-save_report(performance_metric_json_decoded)
+
 
 
 image_name = "Modi4.jpg"
@@ -142,8 +112,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi4 = app.get(image_to_detect)
 print("Modi4:", face_modi4[0].embedding_norm)
 print(f"Modi4:Age{face_modi4[0].get('age')}, Gender {face_modi4[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi4)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "Modi5.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -151,8 +120,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi5 = app.get(image_to_detect)
 print("Modi5:", face_modi5[0].embedding_norm)
 print(f"Modi5:Age{face_modi5[0].get('age')}, Gender {face_modi5[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi5)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "Modi6.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -160,8 +128,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi6 = app.get(image_to_detect)
 print("Modi6:", face_modi6[0].embedding_norm)
 print(f"Modi6:Age{face_modi6[0].get('age')}, Gender {face_modi6[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi6)
-save_report(performance_metric_json_decoded)
+
 
 
 image_name = "Modi7.jpg"
@@ -170,8 +137,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi7 = app.get(image_to_detect)
 print("Modi7:", face_modi7[0].embedding_norm)
 print(f"Modi7:Age{face_modi7[0].get('age')}, Gender {face_modi7[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi7)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "Modi8.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -179,8 +145,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi8 = app.get(image_to_detect)
 print("Modi8:", face_modi8[0].embedding_norm)
 print(f"Modi8:Age{face_modi8[0].get('age')}, Gender {face_modi8[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi8)
-save_report(performance_metric_json_decoded)
+
 
 image_name = "Modi9.jpg"
 input_image_path = "./datasets/input/" + image_name
@@ -188,8 +153,7 @@ image_to_detect = cv2.imread(input_image_path)
 face_modi9 = app.get(image_to_detect)
 print("Modi9:", face_modi9[0].embedding_norm)
 print(f"Modi9:Age{face_modi9[0].get('age')}, Gender {face_modi9[0].get('gender')}")
-performance_metric_json_decoded = get_json(image_name, face_modi9 )
-save_report(performance_metric_json_decoded)
+
 
 
 key = 'landmark_3d_68'

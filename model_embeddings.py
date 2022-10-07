@@ -14,8 +14,8 @@ app = FaceAnalysis(providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
 app.prepare(ctx_id=0, det_size=(640, 640))
 
 
-def model_json(imagName, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding):
-    return ModelOutput(imagName, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding)
+def model_json(imagName, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding,face_output):
+    return ModelOutput(imagName, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding,face_output)
 
 
 def save_report(report_to_save):
@@ -27,7 +27,7 @@ def get_json(image_name, face_output):
                              face_output[0].get('landmark_3d_68'), face_output[0].get('det_score'),
                              face_output[0].get('pose'),
                              face_output[0].get('landmark_2d_106'), face_output[0].get('gender'),
-                             face_output[0].get('age'), face_output[0].get('embedding'))
+                             face_output[0].get('age'), face_output[0].get('embedding'),face_output)
     # print(ModelPerformanceMetricEncoder().encode(modeloutput))
     print(type(modeloutput))
     print(ModelPerformanceMetricEncoder().encode(modeloutput))

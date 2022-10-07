@@ -32,29 +32,31 @@ class ModelPerformanceMetric:
 
 
 class ModelOutput:
-    def __init__(self, image_name, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding):
+    def __init__(self, image_name, bbox, kps, landmark_3d_68, det_score, pose, landmark_2d_106, gender, age, embedding,face_output):
         self.id = generate_unique_id()
         print("id: ", type(self.id))
         self.image_name = image_name
         print("image_name: ", type(self.image_name))
-        self.bbox = bbox.tolist()
+        self.bbox =  face_output[0].get('bbox').tolist()
         print("bbox: ",type(self.bbox))
-        self.kps = kps.tolist()
+        self.kps = face_output[0].get('kps').tolist()
         print("kps: ",type(self.kps))
-        self.landmark_3d_68 = landmark_3d_68.tolist()
+        self.landmark_3d_68 = face_output[0].get('landmark_3d_68').tolist()
         print("landmark_3d_68: ",type(self.landmark_3d_68))
-        self.det_score = float(det_score)
+        self.det_score = float(face_output[0].get('det_score'))
         print("det_score: ", type(self.det_score))
-        self.pose = pose.tolist()
+        self.pose =  face_output[0].get('pose').tolist()
         print("pose: ",type(self.pose))
-        self.landmark_2d_106 = landmark_2d_106.tolist()
+        self.landmark_2d_106 = face_output[0].get('landmark_2d_106').tolist()
         print("landmark_2d_106: ",type(self.landmark_2d_106))
-        self.gender = int(gender)
+        self.gender = int(face_output[0].get('gender'))
         print("gender: ", type(self.gender))
-        self.age = age
+        self.age = face_output[0].get('age')
         print("age: ", type(self.age))
-        self.embedding = embedding.tolist()
+        self.embedding = face_output[0].get('embedding').tolist()
         print("embedding: ",type(self.embedding))
+        self.normed_embedding = face_output[0].normed_embedding.tolist()
+        print("normed_embedding: ", type(self.normed_embedding))
 
 
 class Accuracy:

@@ -18,6 +18,12 @@ def save_to_db(dbName, collectionName, collections):
     collection_name = dbname[collectionName]
     print(collection_name.insert_many(collections))
 
+def fetchAll(dbName, collectionName,field):
+    dbname = get_database(dbName)
+    print(dbname)
+    collection_name = dbname[collectionName]
+    return list(collection_name.find({},{field: 1,"image_name":1}))
+
 
 item_1 = {
     "id": 1660193719,

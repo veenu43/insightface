@@ -23,10 +23,21 @@ def get_embeddings(image_name,path):
     #print(f"{image_name}:Age{face_embeddings[0].get('age')}, Gender {face_embeddings[0].get('gender')}")
     return face_embeddings
 
-def match(face_embedding,known_face_encodings):
-    print(np.linalg.norm(known_face_encodings - face_embedding[0].normed_embedding, axis=1))
-    print(list(np.linalg.norm(known_face_encodings - face_embedding[0].normed_embedding, axis=1) <= 1.05))
+def match_euclidean(face_embedding,known_face_encodings):
+    euclidean_value= np.linalg.norm(known_face_encodings - face_embedding[0].normed_embedding, axis=1)
+    print(euclidean_value)
+    print(list(euclidean_value <= 1.05))
 
+def match_cosine(face_embedding,known_face_encodings):
+    cosine_value= np.dot(known_face_encodings, face_embedding[0].normed_embedding) / np.linalg.norm(
+        known_face_encodings, axis=1) * np.linalg.norm(face_embedding[0].normed_embedding)
+    print(cosine_value)
+    print(list(cosine_value > 0.4))
+    '''
+    for known_face_encoding in known_face_encodings:
+        print(np.dot(known_face_encoding,face_embedding[0].normed_embedding)/np.linalg.norm(known_face_encoding)*np.linalg.norm(face_embedding[0].normed_embedding))
+    '''
+    #print(list(np.dot(known_face_encodings - face_embedding[0].normed_embedding) <= 0.5))
 def main():
     #print("face_embeddings: ",face_embedding)
     known_face_encodings = fetchAll('faceRecognition', 'insightface_buffalo_l','normed_embedding')
@@ -44,7 +55,7 @@ def main():
     for image in images:
         print("image", image)
         face_embedding = get_embeddings(image, path)
-        match(face_embedding, known_face_encodings_landmark)
+        match_cosine(face_embedding, known_face_encodings_landmark)
         print(known_face_names)
 
 

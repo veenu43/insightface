@@ -1,10 +1,7 @@
-import cv2
 import numpy as np
 import json
-import insightface
 from schema.ModelPerformanceMetric import ModelOutput, ModelPerformanceMetricEncoder
 from insightface.app import FaceAnalysis
-from insightface.data import get_image as ins_get_image
 import cv2
 from db.mongodb_operations import save_to_db
 import os
@@ -64,6 +61,7 @@ def get_embeddings_store(images, path):
     image_embeddings = []
     for image in images:
         image_embedding = get_embeddings(image, path)
+        image_embeddings.append(image_embedding)
         print(type(image_embedding))
     print(image_embeddings)
     save_report(image_embeddings)

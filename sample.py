@@ -45,7 +45,16 @@ def match_cosine(face_embedding, known_face_encodings):
 def match(face_embedding, known_face_encodings, name):
     result = match_cosine(face_embedding, known_face_encodings)
     print(name, result)
-    print(name, list(result <= 0.4))
+    print(name, list(result > 0.4))
+
+
+def getDetails(name, image_name, path):
+    input_image_path = path + image_name
+    image_to_detect = cv2.imread(input_image_path)
+    faces_embedding = app.get(image_to_detect)
+    print(name, faces_embedding[0].embedding_norm)
+    print(f"{name}:Age{faces_embedding[0].get('age')}, Gender {faces_embedding[0].get('gender')}")
+    return faces_embedding
 
 
 '''
@@ -67,98 +76,36 @@ print(f"length{len(face_elon)}")
 #print(data['embedding'])
 
 '''
+path = "./datasets/input/"
 print(face_elon)
 print(type(face_elon))
 print(type(face_elon[0]))
 print(type(face_elon[0].get('embedding')))
-print("Elon:", face_elon[0].embedding_norm)
-print(f"Elon:Age{face_elon[0].get('age')}, Gender {face_elon[0].get('gender')}")
+face_elon = getDetails("Elon:", "elon.jpg", path)
 
-image_name = "elon2.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_elon2 = app.get(image_to_detect)
-print("Elon2:", face_elon2[0].embedding_norm)
-print(f"Elon2:Age{face_elon2[0].get('age')}, Gender {face_elon2[0].get('gender')}")
+face_elon2 = getDetails("Elon2:", "elon2.jpg", path)
 
-image_name = "biden.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-faces_biden = app.get(image_to_detect)
-print("Biden:", faces_biden[0].embedding_norm)
-print(f"Biden:Age{faces_biden[0].get('age')}, Gender {faces_biden[0].get('gender')}")
+faces_biden = getDetails("Biden:", "biden.jpg", path)
 
-image_name = "biden2.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-faces_biden2 = app.get(image_to_detect)
-print("Biden2:", faces_biden2[0].embedding_norm)
-print(f"Biden2:Age{faces_biden2[0].get('age')}, Gender {faces_biden2[0].get('gender')}")
-# print(face_elon[0].get('embedding') == )
+faces_biden2 = getDetails("Biden2:", "biden2.jpg", path)
 
+faces_modi = getDetails("Modi:", "modi.jpg", path)
 
-image_name = "modi.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-faces_modi = app.get(image_to_detect)
-print("Modi:", faces_modi[0].embedding_norm)
-print(f"Modi:Age{faces_modi[0].get('age')}, Gender {faces_modi[0].get('gender')}")
+face_modi2 = getDetails("Modi2:", "Modi2.jpg", path)
 
-image_name = "Modi2.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi2 = app.get(image_to_detect)
-print("Modi2:", face_modi2[0].embedding_norm)
-print(f"Modi2:Age{face_modi2[0].get('age')}, Gender {face_modi2[0].get('gender')}")
+face_modi3 = getDetails("Modi3:", "Modi3.jpg", path)
 
-image_name = "Modi3.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi3 = app.get(image_to_detect)
-print("Modi3:", face_modi3[0].embedding_norm)
-print(f"Modi3:Age{face_modi3[0].get('age')}, Gender {face_modi3[0].get('gender')}")
+face_modi4 = getDetails("Modi4:", "Modi4.jpg", path)
 
-image_name = "Modi4.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi4 = app.get(image_to_detect)
-print("Modi4:", face_modi4[0].embedding_norm)
-print(f"Modi4:Age{face_modi4[0].get('age')}, Gender {face_modi4[0].get('gender')}")
+face_modi5 = getDetails("Modi5:", "Modi5.jpg", path)
 
-image_name = "Modi5.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi5 = app.get(image_to_detect)
-print("Modi5:", face_modi5[0].embedding_norm)
-print(f"Modi5:Age{face_modi5[0].get('age')}, Gender {face_modi5[0].get('gender')}")
+face_modi6 = getDetails("Modi6:", "Modi6.jpg", path)
 
-image_name = "Modi6.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi6 = app.get(image_to_detect)
-print("Modi6:", face_modi6[0].embedding_norm)
-print(f"Modi6:Age{face_modi6[0].get('age')}, Gender {face_modi6[0].get('gender')}")
+face_modi7 = getDetails("Modi7:", "Modi7.jpg", path)
 
-image_name = "Modi7.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi7 = app.get(image_to_detect)
-print("Modi7:", face_modi7[0].embedding_norm)
-print(f"Modi7:Age{face_modi7[0].get('age')}, Gender {face_modi7[0].get('gender')}")
+face_modi8 = getDetails("Modi8:", "Modi8.jpg", path)
 
-image_name = "Modi8.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi8 = app.get(image_to_detect)
-print("Modi8:", face_modi8[0].embedding_norm)
-print(f"Modi8:Age{face_modi8[0].get('age')}, Gender {face_modi8[0].get('gender')}")
-
-image_name = "Modi9.jpg"
-input_image_path = "./datasets/input/" + image_name
-image_to_detect = cv2.imread(input_image_path)
-face_modi9 = app.get(image_to_detect)
-print("Modi9:", face_modi9[0].embedding_norm)
-print(f"Modi9:Age{face_modi9[0].get('age')}, Gender {face_modi9[0].get('gender')}")
+face_modi9 = getDetails("Modi9:", "Modi9.jpg", path)
 
 key = 'landmark_3d_68'
 # 'pose','landmark_3d_68','kps','landmark_2d_106','embedding'
@@ -171,20 +118,8 @@ known_face_names = ["Elon", "Biden", "Modi"]
 known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding,
                              faces_modi[0].normed_embedding]
 
-print(np.linalg.norm(known_face_encodings - faces_biden2[0].get(key), axis=1))
-print(list(np.linalg.norm(known_face_encodings - faces_biden2[0].get(key), axis=1) <= 0.9))
-
-known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding,
-                             faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - faces_biden2[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - faces_biden2[0].normed_embedding, axis=1) <= 0.9))
-
-known_face_norm_encodings = [face_elon[0].normed_embedding, faces_biden[0].normed_embedding,
-                             faces_modi[0].normed_embedding]
-print(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding, axis=1))
-print(list(np.linalg.norm(known_face_norm_encodings - face_elon2[0].normed_embedding, axis=1) <= 0.9))
-
-
+match(faces_biden2, known_face_norm_encodings, "biden2")
+match(face_elon2, known_face_norm_encodings, "elon2")
 match(face_modi2, known_face_norm_encodings, "Modi2")
 match(face_modi3, known_face_norm_encodings, "Modi3")
 match(face_modi4, known_face_norm_encodings, "Modi4")
@@ -193,5 +128,3 @@ match(face_modi6, known_face_norm_encodings, "Modi6")
 match(face_modi7, known_face_norm_encodings, "Modi7")
 match(face_modi8, known_face_norm_encodings, "Modi8")
 match(face_modi9, known_face_norm_encodings, "Modi9")
-
-
